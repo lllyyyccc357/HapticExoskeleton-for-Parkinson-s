@@ -158,7 +158,7 @@ public:
             ze_acc=z_acc-z_predict_acc;
             er_acc = br_acc.inverse() * ze_acc;
             diay_acc = (-er_acc.array().square() / sigma_y_acc.array()).exp();
-            for(int k=1;k<=3;k++)
+            for(int k=0;k<3;k++)
             {
                 if(diay_acc(k)<1e-8)
                 diay_acc(k)=1e-8;
@@ -245,7 +245,7 @@ public:
             ze_mag=z_mag-z_predict_mag;
             er_mag = br_mag.inverse() * ze_mag;
             diay_mag = (-er_mag.array().square() / sigma_y_mag.array()).exp();
-            for(int k=1;k<=3;k++)
+            for(int k=0;k<3;k++)
             {
                 if(diay_mag(k)<1e-16)
                 diay_mag(k)=1e-16;

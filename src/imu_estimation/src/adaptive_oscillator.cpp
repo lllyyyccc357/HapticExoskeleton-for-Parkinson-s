@@ -21,11 +21,13 @@ int main(int argc, char **argv)
     for(int i=0;i<N;i++)
     {
         AO[i].NUM=i;
+        ROS_INFO("output:%lf,phase:%lf,Freq:%lf",AO[if].getOutput(),AO[i].getPhase(),AO[i].getFrequency());
     }
     ros::NodeHandle nh;
     ros::param::get("euler_angle_adaptive_osc_using",GesAngleUsing);
     ros::Subscriber sub_Ges = nh.subscribe<common::gesture>("Gesture_pub",100,doGes);
-
+// 循环，保持节点运行
+    ros::spin();
     return 0;
 }
 void doGes(const common::gesture::ConstPtr& p_ges)

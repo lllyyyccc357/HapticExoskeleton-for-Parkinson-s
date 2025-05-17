@@ -17,7 +17,10 @@ void doGyro(const common::data::ConstPtr& p_gyro);
 void doAcc(const common::data::ConstPtr& p_acc);
 void doMag(const common::data::ConstPtr& p_mag);
 void GesPub(int imuNum,Eigen::Vector3d eulerAngles);
-ros::Publisher ges_pub;
+static ros::Publisher ges_pub;
+static ros::Subscriber sub_gyro;
+static ros::Subscriber sub_acc;
+static ros::Subscriber sub_mag;
 int main(int argc, char **argv) {
 
     for(int i=0;i<N;i++)
@@ -28,14 +31,23 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "IMU_subMes_pubGes");
     ros::NodeHandle nh;
     ges_pub=nh.advertise<common::gesture>("Gesture_pub",10);
-    ros::Subscriber sub_gyro = nh.subscribe<common::data>("gyro_msg",100,doGyro);
-    ros::Subscriber sub_acc = nh.subscribe<common::data>("acc_msg",100,doAcc);
-    ros::Subscriber sub_mag = nh.subscribe<common::data>("mag_msg",100,doMag);
+    sub_gyro = nh.subscribe<common::data>("gyro_msg",100,doGyro);
+    sub_acc = nh.subscribe<common::data>("acc_msg",100,doAcc);
+    sub_mag = nh.subscribe<common::data>("mag_msg",100,doMag);
     
     // 循环，保持节点运行
     ros::spin();
 
     return 0;
+}
+void GesPub(int imuNum,Eigen::Vector3d euler_angles)
+{
+    common::gesture msg;
+    msg.IMUnum=imuNum;
+    msg.EulerAngleX=euler_angles[0];
+    msg.EulerAngleY=euler_angles[1];
+    msg.EulerAngleZ=euler_angles[2];
+    ges_pub.publish(msg);
 }
 void doGyro(const common::data::ConstPtr& p_gyro)
 {
@@ -73,13 +85,4 @@ void doMag(const common::data::ConstPtr& p_mag)
         GesPub(number,IMU[number].euler_angles);
         ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
     }
-}
-void GesPub(int imuNum,double euler_angles[3])
-{
-    common::gesture msg;
-    msg.IMUnum=imuNum;
-    msg.EulerAngleX=euler_angles[0];
-    msg.EulerAngleY=euler_angles[1];
-    msg.EulerAngleZ=euler_angles[2];
-    ges_pub.publish(msg);
 }
