@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 void doGes(const common::gesture::ConstPtr& p_ges)
 {
     int number=p_ges->IMUnum;
-    ROS_INFO("start estimate phase");
+    // ROS_INFO("start estimate phase");
     double signal;
     if(GesAngleUsing=0){
         signal=p_ges->EulerAngleX;
@@ -44,5 +44,5 @@ void doGes(const common::gesture::ConstPtr& p_ges)
         signal=p_ges->EulerAngleZ;
     }
     AO[number].update(signal);
-    ROS_INFO("output:%lf,phase:%lf,Freq:%lf",AO[number].getOutput(),AO[number].getPhase(),AO[number].getFrequency());
+    ROS_INFO("num:%d:output:%lf,phase:%lf,Freq:%lf",number,AO[number].getOutput(),AO[number].getPhase(),AO[number].getFrequency());
 }

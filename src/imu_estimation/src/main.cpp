@@ -73,9 +73,9 @@ void doAcc(const common::data::ConstPtr& p_acc)
     if(IMU[number].InitTrue){
         // ROS_INFO("acc");
         IMU[number].Acc << p_acc->dataX,p_acc->dataY,p_acc->dataZ;
-        // IMU[number].Acc_update();
-        ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
-        GesPub(number,IMU[number].euler_angles);
+        IMU[number].Acc_update();
+        // ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
+        // GesPub(number,IMU[number].euler_angles);
         
     }
 }
@@ -89,6 +89,6 @@ void doMag(const common::data::ConstPtr& p_mag)
         IMU[number].Mag << p_mag->dataX,p_mag->dataY,p_mag->dataZ;
         IMU[number].Mag_update();
         GesPub(number,IMU[number].euler_angles);
-        ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
+        ROS_INFO("number:%d: yaw:%lf,pitch:%lf,roll:%lf",number,IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
     }
 }
