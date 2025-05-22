@@ -90,6 +90,10 @@ class AdaptiveOscillator{
         if (para_(1, 1) < 0) para_(1, 1) = 0;
         double w_e = base_freq_ - para_(1, 1);
         para_(1, 1) += 5 * w_e * dt_;
+        
+        for (int j = 1; j < order_; ++j) {
+            para_(j, 2) += para_dot_(0, 1) * (j);
+        }
 
         for (int j = 1; j < order_; ++j) {
             para_(j, 2) += para_dot_(j, 2) * dt_;
