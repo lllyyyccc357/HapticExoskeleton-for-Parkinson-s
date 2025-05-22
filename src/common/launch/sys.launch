@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <launch>
 <!-- 获取当前工作空间的路径 -->
   <env name="ROS_LOG_DIR" value="$(find your_package)/logFile" />
@@ -19,24 +18,3 @@
 
   <!-- <node name="motor_sub" pkg="gpio_control" type="motor_sub.py" output="log"/> -->
 </launch>
-=======
-<launch>
-  <!-- <env name="ROS_LOG_DIR" value="$(find common)/logFile" /> -->
-  <!-- 加载全局参数 -->
-  <rosparam file="$(find common)/config/global_params.yaml" command="load" />
-
-  <!-- 启动参数加载节点（如果你有 param_loader） -->
-  <node name="param_loader" pkg="common" type="param_loader.py" output="screen">
-    <param name="config_file" value="$(find common)/config/global_params.yaml"/>
-  </node>
-
-  <node name="can_publisher" pkg="can_receive" type="can_pub" output="log"/>
-
-  <node name="IMU_subMes_pubGes" pkg="imu_estimation" type="imu_estimation" output="screen"/>
-  <node name="IMU_subGes_pubPhase" pkg="imu_estimation" type="adaptive_osc" output="screen"/>
-
-  <!-- <node name="motor_pub" pkg="gpio_control" type="motor_pub.py" output="screen"/> -->
-
-  <!-- <node name="motor_sub" pkg="gpio_control" type="motor_sub.py" output="screen"/> -->
-</launch>
->>>>>>> 0af27662387a1404fe8b6f6909ba863f190f46ef
