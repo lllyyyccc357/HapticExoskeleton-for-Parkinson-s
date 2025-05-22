@@ -58,7 +58,7 @@ void doGyro(const common::data::ConstPtr& p_gyro)
     if(IMU[number].InitTrue){
         IMU[number].Gyro << p_gyro->dataX,p_gyro->dataY,p_gyro->dataZ;
         IMU[number].Gyro_update();
-        ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
+        // ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
     }
     
 }
@@ -70,8 +70,8 @@ void doAcc(const common::data::ConstPtr& p_acc)
     }else{
         IMU[number].Acc << p_acc->dataX,p_acc->dataY,p_acc->dataZ;
         IMU[number].Acc_update();
-        GesPub(number,IMU[number].euler_angles);
-        ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
+        // GesPub(number,IMU[number].euler_angles);
+        // ROS_INFO("yaw:%lf,pitch:%lf,roll:%lf",IMU[number].euler_angles[0],IMU[number].euler_angles[1],IMU[number].euler_angles[2]);
     }
 }
 void doMag(const common::data::ConstPtr& p_mag)

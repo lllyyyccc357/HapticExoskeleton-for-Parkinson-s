@@ -28,7 +28,7 @@ int main(int argc, char  *argv[])
     struct can_frame frame;
     
     memset(&frame, 0, sizeof(struct can_frame));
-    
+    system("sudo ifconfig can0 down");
     system("sudo ip link set can0 type can bitrate 500000");
     system("sudo ifconfig can0 up");
     
