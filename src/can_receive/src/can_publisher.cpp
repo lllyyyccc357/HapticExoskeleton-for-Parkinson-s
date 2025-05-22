@@ -29,7 +29,7 @@ int main(int argc, char  *argv[])
     
     memset(&frame, 0, sizeof(struct can_frame));
     
-    system("sudo ip link set can0 type can bitrate 1000000");
+    system("sudo ip link set can0 type can bitrate 500000");
     system("sudo ifconfig can0 up");
     
     //1.Create socket
