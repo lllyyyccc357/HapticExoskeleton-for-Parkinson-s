@@ -10,7 +10,7 @@ def doMotor(m):
     rospy.loginfo("Received motor msg: num=%d, PWM=%.2f, time=%.2f", m.num, m.PWM, m.vibration_time)
     
     # 根据电机编号找到对应的 GPIO 引脚
-    motor_pin = pwm_pin[m.num - 5]  # 假设电机编号从5开始，按顺序对应引脚
+    motor_pin = m.num # 假设电机编号从5开始，按顺序对应引脚
 
     # 初始化PWM控制
     pwm = GPIO.PWM(motor_pin, 320)  # 320Hz PWM频率
