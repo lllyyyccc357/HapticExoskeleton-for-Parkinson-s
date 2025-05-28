@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 import rospy
 import random
-from common.msg import MultiMotor, motor
+from common.msg import MultiMotorCommand, motor
 
 if __name__ == "__main__":
     # 1.初始化 ROS 节点
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         for m in msg.motors:
             rospy.loginfo(f"  num={m.num}, PWM={m.PWM:.2f}, time={m.vibration_time:.2f}")
         
-        # 发布消息
+        # 发布消息raw_
         pub.publish(msg)
         
         # 休眠

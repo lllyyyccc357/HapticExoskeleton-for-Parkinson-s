@@ -1,7 +1,7 @@
 import rospy
 import RPi.GPIO as GPIO
 import time
-from common.msg import MultiMotor, motor
+from common.msg import MultiMotorCommand, motor
 
 # 设定控制电机的 GPIO 引脚
 pwm_pin = [5, 6, 12, 13, 16, 19, 20, 21]
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     GPIO.setup(pwm_pin, GPIO.OUT)  # 设置 GPIO 引脚为输出
     
     # 3. 创建订阅者对象
-    sub = rospy.Subscriber("multi_motor_msg", MultiMotor, doMultiMotor, queue_size=10)
+    sub = rospy.Subscriber("multi_motor_msg", MultiMotorCommand, doMultiMotor, queue_size=10)
     
     # 4. 循环等待消息
     rospy.spin()

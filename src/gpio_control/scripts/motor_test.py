@@ -58,7 +58,7 @@ def main():
             print("没有有效的电机编号，请重新输入")
             continue
 
-        mode = raw_input("选择模式 (1 or 2): ").strip()
+        mode = input("选择模式 (1 or 2): ").strip()
         if mode not in modes:
             print("模式错误，请输入1或2！")
             continue
