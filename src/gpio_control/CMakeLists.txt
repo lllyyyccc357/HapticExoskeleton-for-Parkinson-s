@@ -163,6 +163,7 @@ include_directories(
 catkin_install_python(PROGRAMS
   scripts/motor_pub.py
   scripts/motor_sub.py
+  scripts/motor_test.py
   scripts/key_detect.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

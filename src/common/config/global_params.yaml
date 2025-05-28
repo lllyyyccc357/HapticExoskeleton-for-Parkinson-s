@@ -1,2 +1,10 @@
 euler_angle_adaptive_osc_using: 0
 # 0 1 2
+motor_outA: 5
+motor_outB: 6
+motor_outC: 12
+motor_outD: 13
+motor_outE: 19
+motor_outF: 16
+motor_outG: 20
+motor_outH: 21

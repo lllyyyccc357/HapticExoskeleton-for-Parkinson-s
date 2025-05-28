@@ -53,6 +53,7 @@ add_message_files(
   data.msg
   motor.msg
   gesture.msg
+  MultiMotorCommand.msg
 )
 
 ## Generate services in the 'srv' folder
