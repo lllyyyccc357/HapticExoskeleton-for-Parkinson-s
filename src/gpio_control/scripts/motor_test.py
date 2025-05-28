@@ -40,7 +40,7 @@ def main():
 
     # 主循环
     while not rospy.is_shutdown():
-        keys = raw_input("请输入电机编号组合 (a-h，例如 ab 或 acf，q退出): ").strip().lower()
+        keys = input("请输入电机编号组合 (a-h，例如 ab 或 acf，q退出): ").strip().lower()
         if keys == "q":
             break
 
